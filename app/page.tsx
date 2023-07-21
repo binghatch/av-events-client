@@ -1,4 +1,10 @@
 import Airtable from "airtable"
+import HeaderSection from "./components/HeaderSection";
+import SessionsSection from "./components/SessionsSection";
+import SpeakerSection from "./components/SpeakerSection";
+import NewsletterSection from "./components/NewsletterSection";
+import SocialsSection from "./components/SocialsSection";
+import FooterSection from "./components/FooterSection";
 
 const getData = async () => {
   try {
@@ -26,15 +32,12 @@ export default async function Home() {
 
   return (
     <main className="flex flex-row min-h-screen items-center justify-around">
-      {data && data.map(session => {
-        return (
-          <div className="w-96 p-6 border border-opacity-10 rounded-md" key={session.id}>
-            <h1 className="text-lg">{session.fields.session_name}</h1>
-            <p className="text-gray-400">{session.fields.session_subheading}</p>
-            <p className="text-sm">{session.fields.session_description}</p>
-          </div>
-        )
-      })}
+      <HeaderSection />
+      <SessionsSection />
+      <SpeakerSection />
+      <NewsletterSection />
+      <SocialsSection />
+      <FooterSection />
     </main>
   )
 }

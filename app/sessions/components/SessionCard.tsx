@@ -1,5 +1,8 @@
+"use client";
+
 import { convertIso8601To24HourTime, convertSecondsToTime } from "@/app/utils/conversions"
 import Image from 'next/image'
+import { useState } from "react";
 
 interface SpeakerAirtableRecord {
   id: string;
@@ -42,6 +45,12 @@ export default function SessionCard(props: SessionCardProps) {
     sessionSpeakers
   } = props;
 
+  const [showDescription, setShowDescription] = useState(false);
+
+  const handleToggle = () => {
+    setShowDescription(!showDescription);
+  }
+
   return (
     <div className="flex flex-col p-6 m-4 border border-gray-800 rounded-lg bg-gray-900 text-white">
       <div className="flex flex-row justify-between items-center">
@@ -55,6 +64,7 @@ export default function SessionCard(props: SessionCardProps) {
         <h4 className="text-xl font-bold text-ellipsis overflow-hidden">{sessionTitle}</h4>
         <p className="text-gray-500 text-ellipsis overflow-hidden">{sessionSubheading}</p>
         <p className="pt-4">{sessionDescription}</p>
+        <p>{showDescription ? 'Read more' : 'Read less'}</p>
       </div>
       <div>  
         {sessionSpeakers && sessionSpeakers.length > 0 && sessionSpeakers.map(speaker => (
