@@ -15,7 +15,6 @@ export const getData = async (): Promise<string> => {
       const speakerIds = sessionData._rawJson.fields.session_speakers;
       const speakers = await Promise.all(speakerIds.map(async (speaker: string) => {
         const speakerData = await base('speakers').find(speaker.toString());
-        console.log(speakerData.fields.avatar);
         return speakerData;
       }));
 
@@ -25,8 +24,6 @@ export const getData = async (): Promise<string> => {
 
     // Serialize the data to JSON
     const serializedData = JSON.stringify(sessions);
-
-    console.log(serializedData);
     return serializedData;
   } catch (e) {
     console.error("Error fetching data from Airtable:", e);

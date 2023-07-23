@@ -7,8 +7,6 @@ export default async function SessionsSection() {
   const response = await getData();
   const data: SessionAirtableRecord[] = JSON.parse(response); // Type data as SessionAirtableRecord[]
 
-  console.log(data);
-
   return (
     <section>
       <h2>Sessions</h2>
