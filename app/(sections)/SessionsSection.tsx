@@ -1,5 +1,5 @@
 import React from "react";
-import SessionCard from "../sessions/components/SessionCard";
+import SessionCard from "../components/SessionCard";
 import { getData } from "../utils/airtable";
 import { SessionAirtableRecord } from "../utils/airtable"; // Import the SessionAirtableRecord interface
 

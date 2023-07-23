@@ -1,10 +1,10 @@
 import Airtable from "airtable"
-import HeaderSection from "./components/HeaderSection";
-import SessionsSection from "./components/SessionsSection";
-import SpeakerSection from "./components/SpeakerSection";
-import NewsletterSection from "./components/NewsletterSection";
-import SocialsSection from "./components/SocialsSection";
-import FooterSection from "./components/FooterSection";
+import HeaderSection from "./(sections)/HeaderSection";
+import SessionsSection from "./(sections)/SessionsSection";
+import SpeakerSection from "./(sections)/SpeakerSection";
+import NewsletterSection from "./(sections)/NewsletterSection";
+import SocialsSection from "./(sections)/SocialsSection";
+import FooterSection from "./(sections)/FooterSection";
 
 const getData = async () => {
   try {
