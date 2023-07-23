@@ -1,6 +1,9 @@
-export function convertIso8601To24HourTime(iso8601Time: string) {
+export function convertIso8601To24HourTime(iso8601Time: string | undefined) {
+  if (!iso8601Time || iso8601Time.length < 16) {
+    return "";
+  }
+
   const formattedTime = iso8601Time.slice(11, 16);
-  
   return formattedTime;
 }
 

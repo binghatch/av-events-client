@@ -1,73 +1,64 @@
-"use client";
+'use client';
 
-import { convertIso8601To24HourTime, convertSecondsToTime } from "@/app/utils/conversions"
-import Image from 'next/image'
 import { useState } from "react";
+import { convertIso8601To24HourTime, convertSecondsToTime } from "@/app/utils/conversions";
+import Image from 'next/image';
+import { Transition } from '@headlessui/react'
+import { SpeakerAirtableRecord } from "@/app/types";
+import { Shadows_Into_Light_Two } from "next/font/google";
 
-interface SpeakerAirtableRecord {
-  id: string;
-  fields: {
-    full_name: string;
-    first_name: string;
-    last_name: string;
-    job_title: string;
-    company: string;
-    avatar: {
-      id: string;
-      width: number;
-      height: number;
-      url: string;
-      filename: string;
-      size: number;
-      type: string;
-    }[];
+interface SessionCardProps {
+  sessionData: {
+    session_title: string;
+    session_subheading: string;
+    session_type: string;
+    session_start: string;
+    session_duration: number;
+    session_description?: string;
+    session_speakers?: SpeakerAirtableRecord[];
   };
 }
 
-interface SessionCardProps {
-  sessionTitle: string,
-  sessionSubheading: string,
-  sessionType: "Keynote" | "Opening Words",
-  sessionStart: string,
-  sessionDuration: number,
-  sessionDescription?: string,
-  sessionSpeakers?: SpeakerAirtableRecord[]
-}
+export default function SessionCard({ sessionData }: SessionCardProps) {
+  const {
+    session_title,
+    session_subheading,
+    session_type,
+    session_start,
+    session_duration,
+    session_description,
+    session_speakers
+  } = sessionData;
 
-export default function SessionCard(props: SessionCardProps) {
-  const { 
-    sessionTitle,
-    sessionSubheading,
-    sessionType,
-    sessionStart,
-    sessionDuration,
-    sessionDescription,
-    sessionSpeakers
-  } = props;
-
-  const [showDescription, setShowDescription] = useState(false);
+  const [showFullDescription, setShowFullDescription] = useState(false);
 
   const handleToggle = () => {
-    setShowDescription(!showDescription);
-  }
+    setShowFullDescription(!showFullDescription);
+  };
 
   return (
-    <div className="flex flex-col p-6 m-4 border border-gray-800 rounded-lg bg-gray-900 text-white">
+    <div className="flex flex-col p-6 m-4 border border-gray-800 rounded-lg bg-gray-900 text-white max-h-full">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row items-baseline">
-          <h3 className="text-3xl font-bold">{convertIso8601To24HourTime(sessionStart)}</h3>
-          <span className="text-sm ms-2">{convertSecondsToTime(sessionDuration)}</span>
+          <h3 className="text-3xl font-bold">{convertIso8601To24HourTime(session_start)}</h3>
+          <span className="text-sm ms-2">{convertSecondsToTime(session_duration)}</span>
         </div>
-        <div className="px-2 py-0.5 border border-indigo-500 rounded-md bg-indigo-950 text-sm text-indigo-500">{sessionType}</div>
+        <div className="px-2 py-0.5 border border-indigo-500 rounded-md bg-indigo-950 text-sm text-indigo-500">{session_type}</div>
       </div>
-      <div className="mt-6 w-full">
-        <h4 className="text-xl font-bold text-ellipsis overflow-hidden">{sessionTitle}</h4>
-        <p className="text-gray-500 text-ellipsis overflow-hidden">{sessionSubheading}</p>
-        <p className="pt-4">{sessionDescription}</p>
-        <p>{showDescription ? 'Read more' : 'Read less'}</p>
+      <div className="flex flex-col justify-start items-start mt-6 w-full">
+        <h4 className="text-xl font-bold text-ellipsis overflow-hidden">{session_title}</h4>
+        <p className="text-gray-500 text-ellipsis overflow-hidden">{session_subheading}</p>
+        <div className={`block relative w-full overflow-hidden ${showFullDescription ? "max-h-[512px]" : "max-h-20"} transition-max-h duration-300 ease-in-out`}>
+          <div className={`flex flex-row justify-start items-end w-full h-20 transition-all duration-300 ease-in-out absolute bottom-0 left-0 overflow-hidden bg-gradient-to-t from-gray-900 from-20% ${showFullDescription ? "to-transparent to-30%" : ""}`} role="button" onClick={() => handleToggle()}>
+            <span className="text-sm">{showFullDescription ? "Read less" : "Read more"}</span>
+          </div>
+          <div className="mb-4">
+            <p className="mt-4 mb-12 text-sm tracking-wide font-light">{session_description}</p>
+          </div>
+        </div>
       </div>
-      <div>  
-        {sessionSpeakers && sessionSpeakers.length > 0 && sessionSpeakers.map(speaker => (
+    <div>
+        {session_speakers && session_speakers.length > 0 && session_speakers.map(speaker => (
           <div className="flex flex-row justify-start items-center w-full first:mt-8 mt-4" key={speaker.id}>
             <div className="border border-gray-800 rounded-full overflow-hidden">
               <Image src={speaker.fields.avatar[0].url} width={56} height={56} alt={speaker.fields.full_name} />
@@ -80,5 +71,5 @@ export default function SessionCard(props: SessionCardProps) {
         ))}
       </div>
     </div>
-  )
+  );
 }

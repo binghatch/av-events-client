@@ -6,15 +6,6 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    fontFamily: {
-      sans: [
-        "Inter var, sans-serif",
-        {
-          fontFeatureSettings: '"cv11", "ss01"',
-          fontVariationSettings: '"opsz" 32'
-        },
-      ],
-    },
   },
   plugins: [],
 }
