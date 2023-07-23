@@ -3,9 +3,7 @@
 import { useState } from "react";
 import { convertIso8601To24HourTime, convertSecondsToTime } from "@/app/utils/conversions";
 import Image from 'next/image';
-import { Transition } from '@headlessui/react'
 import { SpeakerAirtableRecord } from "@/app/types";
-import { Shadows_Into_Light_Two } from "next/font/google";
 
 interface SessionCardProps {
   sessionData: {

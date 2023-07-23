@@ -1,7 +1,7 @@
 import React from "react";
 import SessionCard from "../components/SessionCard";
 import { getData } from "../utils/airtable";
-import { SessionAirtableRecord } from "../utils/airtable"; // Import the SessionAirtableRecord interface
+import { SessionAirtableRecord } from "../types";// Import the SessionAirtableRecord interface
 
 export default async function SessionsSection() {
   const response = await getData();
