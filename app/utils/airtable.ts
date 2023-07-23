@@ -1,11 +1,11 @@
 import Airtable from "airtable";
-import { SessionAirtableRecord } from "../types";
+import { SessionAirtableRecord, SpeakerAirtableRecord } from "../types";
 
-export const getData = async (): Promise<string> => {
+Airtable.configure({ apiKey: process.env.AIRTABLE_API_KEY });
+const base = Airtable.base(`${process.env.AIRTABLE_BASE_ID}`);
+
+export const getSessionData = async (): Promise<string> => {
   try {
-    Airtable.configure({ apiKey: process.env.AIRTABLE_API_KEY });
-    const base = Airtable.base(`${process.env.AIRTABLE_BASE_ID}`);
-  
     const record = await base('events').find(`${process.env.AIRTABLE_RECORD_ID}`);
 
     const sessionIds = record._rawJson.fields.sessions;
@@ -28,5 +28,26 @@ export const getData = async (): Promise<string> => {
   } catch (e) {
     console.error("Error fetching data from Airtable:", e);
     return "[]"; // Return an empty array as JSON string in case of an error.
+  }
+};
+
+export const getSpeakerData = async (): Promise<SpeakerAirtableRecord[]> => {
+  try {
+    const allSpeakers: SpeakerAirtableRecord[] = [];
+
+    const records = await base('speakers').select({
+      sort: [{ field: 'last_name', direction: 'asc' }],
+    }).all();
+
+    records.forEach((record) => {
+      const speaker = { id: record.id, fields: record.fields } as SpeakerAirtableRecord;
+      allSpeakers.push(speaker);
+    });
+
+
+    return allSpeakers;
+  } catch (e) {
+    console.error("Error fetching data from Airtable:", e);
+    return []; // Return an empty array as JSON string in case of an error.
   }
 };

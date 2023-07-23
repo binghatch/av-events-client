@@ -5,7 +5,7 @@ import { convertIso8601To24HourTime, convertSecondsToTime } from "@/app/utils/co
 import Image from 'next/image';
 import { SpeakerAirtableRecord } from "@/app/types";
 
-interface SessionCardProps {
+interface SessionAirtableData {
   sessionData: {
     session_title: string;
     session_subheading: string;
@@ -17,7 +17,7 @@ interface SessionCardProps {
   };
 }
 
-export default function SessionCard({ sessionData }: SessionCardProps) {
+export default function SessionCard({ sessionData }: SessionAirtableData) {
   const {
     session_title,
     session_subheading,
@@ -35,7 +35,7 @@ export default function SessionCard({ sessionData }: SessionCardProps) {
   };
 
   return (
-    <div className="flex flex-col p-6 m-4 border border-gray-800 rounded-lg bg-gray-900 text-white max-h-full">
+    <div className="flex flex-col p-6 first:mt-8 mt-4 border border-gray-800 rounded-lg bg-gray-900 text-white max-h-full">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row items-baseline">
           <h3 className="text-3xl font-bold">{convertIso8601To24HourTime(session_start)}</h3>
