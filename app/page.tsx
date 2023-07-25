@@ -13,7 +13,7 @@ export default async function Home() {
     <main className="flex flex-col min-h-screen items-center justify-around">
       <HeaderSection />
       <SessionsSection />
-      <SpeakerSection />
+      {/* <SpeakerSection /> */}
       {/* <NewsletterSection /> */}
       <SocialsSection />
       <FooterSection />
