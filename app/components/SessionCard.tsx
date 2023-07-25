@@ -59,7 +59,11 @@ export default function SessionCard({ sessionData }: SessionAirtableData) {
         {session_speakers && session_speakers.length > 0 && session_speakers.map(speaker => (
           <div className="flex flex-row justify-start items-center w-full first:mt-8 mt-4" key={speaker.id}>
             <div className="border border-gray-800 rounded-full overflow-hidden">
-              <Image src={speaker.fields.avatar[0].url} width={56} height={56} alt={speaker.fields.full_name} />
+              {speaker.fields.avatar ? (
+                <Image src={speaker.fields.avatar[0].url} width={56} height={56} alt={speaker.fields.full_name}></Image>
+              ) : (
+                <span className="text-5xl">{`${speaker.fields.first_name[0]} ${speaker.fields.last_name[0]}`}</span>
+              )}
             </div>
             <div className="ms-4">
               <h5 className="font-bold">{speaker.fields.full_name}</h5>
