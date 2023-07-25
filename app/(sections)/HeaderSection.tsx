@@ -19,9 +19,9 @@ export default function HeaderSection() {
           </div>
           <div>
             <p className="font-bold text-sm">Place</p>
-            <p className="tracking-wide">
-              Visionary Clubhouse <span className="inline-flex flex-row justify-center items-center px-1 py-[0.05em] text-sm tracking-wide font-medium border rounded border-violet-700 bg-violet-700">Hall&nbsp;<span>A2</span></span>, IAA München
-            </p>
+            <Link href="https://goo.gl/maps/hhdT6XKMNL83qwYq6" target="_blank" className="tracking-wide">
+              <span className="no-underline hover:underline underline-offset-4">Visionary Clubhouse</span><span className="inline-flex flex-row justify-center items-center ms-1.5 px-1 py-[0.05em] text-sm tracking-wide font-medium border rounded border-violet-700 bg-violet-700">Hall A2</span>
+            </Link>
           </div>
         </div>
       </div>

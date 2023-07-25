@@ -9,7 +9,7 @@ export default async function SessionsSection() {
 
   return (
     <section className="mt-12 p-6" id="sessions">
-      <h2 className="text-3xl font-bold text-terracotta-400">Sessions</h2>
+      <h2 className="text-4xl font-bold text-terracotta-400">Sessions</h2>
       <p>This is an overview of the sessions that will take place.</p>
       <div>
         {data && data.map(sessionData => {
