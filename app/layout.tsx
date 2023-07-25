@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`dark:bg-gray-950 bg-gray-50 dark:text-white text-gray-950 ${figtree.className} antialiased`}>{children}</body>
+      <body className={`bg-midnight-950 text-white ${figtree.className} antialiased`}>{children}</body>
     </html>
   )
 }

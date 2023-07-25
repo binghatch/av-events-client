@@ -8,8 +8,8 @@ export default async function SessionsSection() {
   const data: SessionAirtableRecord[] = JSON.parse(response); // Type data as SessionAirtableRecord[]
 
   return (
-    <section className="p-6" id="sessions">
-      <h2 className="text-3xl font-bold text-persimmon-500">Sessions</h2>
+    <section className="mt-12 p-6" id="sessions">
+      <h2 className="text-3xl font-bold text-terracotta-400">Sessions</h2>
       <p>This is an overview of the sessions that will take place.</p>
       <div>
         {data && data.map(sessionData => {
