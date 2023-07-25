@@ -3,12 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 interface SpeakerAirtableData {
-  speakerData: SpeakerAirtableRecord | undefined; // Make sure to handle undefined speakerData
+  speakerData?: SpeakerAirtableRecord; // Make sure to handle undefined speakerData
 }
 
 export default function SpeakerTile({ speakerData }: SpeakerAirtableData) {
-  if (!speakerData) {
-    return null; // Return null or some fallback content if speakerData is undefined
+  if (!speakerData || !speakerData.fields) {
+    return null; // Return null or some fallback content if speakerData or speakerData.fields is undefined
   }
 
   const { fields } = speakerData;
