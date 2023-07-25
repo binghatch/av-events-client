@@ -23,7 +23,7 @@ module.exports = {
         }
       },
       backgroundImage: {
-        'hero-mobile': "url('/images/av-hero-bg-mobile.png')",
+        'hero-bg': "url('/images/av-hero-bg.png')",
       }
     }
   },

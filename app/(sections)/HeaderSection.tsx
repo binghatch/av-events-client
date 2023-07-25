@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function HeaderSection() {
   return (
-    <section className="flex flex-col justify-center items-start min-h-screen w-full bg-hero-mobile bg-no-repeat bg-contain">
+    <section className="flex flex-col justify-center items-start min-h-screen w-full bg-hero-bg bg-no-repeat bg-center bg-cover">
       <div className="p-6">
         <h1 className="flex flex-col items-start font-medium text-5xl">Assembly Summit</h1>
         <p className="mt-6 font-light text-wide w-5/6">Engage with thought leaders and entrepreneurs shaping the future of infrastructure, systems, and applications.</p>
