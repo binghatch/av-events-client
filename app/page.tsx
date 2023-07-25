@@ -14,7 +14,7 @@ export default async function Home() {
       <HeaderSection />
       <SessionsSection />
       <SpeakerSection />
-      <NewsletterSection />
+      {/* <NewsletterSection /> */}
       <SocialsSection />
       <FooterSection />
     </main>

@@ -9,9 +9,13 @@ interface SpeakerAirtableData {
 export default function SpeakerTile({ speakerData }: SpeakerAirtableData) {
   return (
     <li className="w-full">
-      <Link href={speakerData.fields.linkedin}>
+      <Link href={speakerData.fields.linkedin || "#"} className={speakerData.fields.linkedin ? 'pointer-events-auto' : 'pointer-events-none'} target="_blank">
         <div className="flex flex-row justify-center items-center relative overflow-hidden w-full h-full aspect-square border border-gray-800 rounded-lg bg-gray-900">
-          <Image objectFit="cover" fill src={speakerData.fields.avatar[0].thumbnails.full.url} alt={speakerData.fields.full_name}></Image>
+          {speakerData.fields.avatar ? (
+            <Image className="object-cover" fill src={speakerData.fields.avatar[0].thumbnails.full.url} alt={speakerData.fields.full_name}></Image>
+          ) : (
+            <span className="text-5xl">{`${speakerData.fields.first_name[0]} ${speakerData.fields.last_name[0]}`}</span>
+          )}
           <div className="flex flex-col justify-end items-start absolute w-full h-full bottom-0 left-0 p-3 bg-gradient-to-b from-transparent to-gray-950">
             <p className="font-bold truncate max-w-full">{`${speakerData.fields.first_name} ${speakerData.fields.last_name}`}</p>
             <p className="text-sm truncate max-w-full">{`${speakerData.fields.company}`}</p>

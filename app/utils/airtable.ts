@@ -13,10 +13,14 @@ export const getSessionData = async (): Promise<string> => {
       const sessionData = await base('sessions').find(session.toString());
 
       const speakerIds = sessionData._rawJson.fields.session_speakers;
-      const speakers = await Promise.all(speakerIds.map(async (speaker: string) => {
-        const speakerData = await base('speakers').find(speaker.toString());
-        return speakerData;
-      }));
+      let speakers;
+
+      if (speakerIds) {
+        speakers = await Promise.all(speakerIds.map(async (speaker: string) => {
+          const speakerData = await base('speakers').find(speaker.toString());
+          return speakerData;
+        }))
+      }; 
 
       sessionData.fields.session_speakers = speakers;
       return sessionData;

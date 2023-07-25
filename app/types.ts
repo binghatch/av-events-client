@@ -19,7 +19,7 @@ export interface SpeakerAirtableRecord {
     last_name: string;
     job_title: string;
     company: string;
-    avatar: {
+    avatar?: {
       id: string;
       width: number;
       height: number;
@@ -45,6 +45,7 @@ export interface SpeakerAirtableRecord {
         };
       };
     }[];
-    linkedin: string;
+    linkedin?: string;
+    show: boolean;
   };
 }
