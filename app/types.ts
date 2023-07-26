@@ -49,3 +49,5 @@ export interface SpeakerAirtableRecord {
     show: boolean;
   };
 }
+
+export type HandleToggleFunction = () => void;
