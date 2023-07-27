@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-figtree)'],
+      },
       colors: {
         'terracotta': {
           DEFAULT: '#E77366',
