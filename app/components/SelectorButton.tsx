@@ -4,7 +4,7 @@ export default function SelectorButton({ group, handleToggle, isSelected }: { gr
   return (
     <button 
       onClick={() => handleToggle(group)} 
-      className={`inline-flex flex-row box-border justify-center items-center px-1 py-[0.05em] text-sm tracking-wide font-medium border border-violet-700 rounded ${isSelected ? 'bg-violet-800 focus:ring-2 ring-violet-500' : 'bg-violet-700 hover:bg-violet-800'}`}>
+      className={`inline-flex flex-row box-border justify-center items-center px-1 py-[0.05em] text-sm tracking-wide font-medium rounded ${isSelected ? 'bg-terracotta-400 bg-opacity-100 focus:ring-2 ring-terracotta-500' : 'bg-terracotta-400 bg-opacity-10 hover:bg-opacity-30'}`}>
       {group}
     </button>
   )
