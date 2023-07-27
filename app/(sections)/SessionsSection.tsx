@@ -9,7 +9,7 @@ interface ChildProps {
 }
 
 export default function SessionsSection({ sessions }: ChildProps) {
-  const [selectedGroup, setSelectedGroup] = useState<string | "All" | null>("All");
+  const [selectedGroup, setSelectedGroup] = useState<string | "All">("All");
 
   const handleToggle: HandleToggleFunction = (group) => {
     if (group === "All" || selectedGroup === group) {
@@ -23,7 +23,7 @@ export default function SessionsSection({ sessions }: ChildProps) {
     <section className="mt-12 p-6" id="sessions">
       <h2 className="text-4xl font-bold text-terracotta-400">Sessions</h2>
       <p>This is an overview of the sessions that will take place.</p>
-      <SessionSelector handleToggle={handleToggle} />
+      <SessionSelector handleToggle={handleToggle} selectedGroup={selectedGroup} />
       <div>
         {sessions && sessions.map(session => {
           if (selectedGroup === "All" || selectedGroup === session.fields.session_group) {
