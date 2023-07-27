@@ -12,12 +12,12 @@ export default function SessionsSection({ sessions }: ChildProps) {
   const [selectedGroup, setSelectedGroup] = useState<string | "All" | null>("All");
 
   const handleToggle: HandleToggleFunction = (group) => {
-    if (group === "All") {
+    if (group === "All" || selectedGroup === group) {
       setSelectedGroup("All");
     } else {
-      setSelectedGroup(selectedGroup === group ? null : group);
+      setSelectedGroup(group);
     }
-  }
+  };
 
   return (
     <section className="mt-12 p-6" id="sessions">
