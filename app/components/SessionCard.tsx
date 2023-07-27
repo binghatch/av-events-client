@@ -67,7 +67,7 @@ export default function SessionCard({ sessionData, currentTime }: SessionAirtabl
       </div>
     <div>
         {session_speakers && session_speakers.length > 0 && session_speakers.map(speaker => (
-          <div className="flex flex-row justify-start items-center w-full first:mt-8 mt-4" key={speaker.id}>
+          <a href={speaker.fields.linkedin} className="flex flex-row justify-start items-center w-full first:mt-8 mt-4" key={speaker.id}>
             <div className="border border-midnight-800 rounded-full overflow-hidden">
               {speaker.fields.avatar ? (
                 <Image src={speaker.fields.avatar[0].url} width={56} height={56} alt={speaker.fields.full_name}></Image>
@@ -79,7 +79,7 @@ export default function SessionCard({ sessionData, currentTime }: SessionAirtabl
               <h5 className="font-bold">{speaker.fields.full_name}</h5>
               <p className="text-zinc-400 text-ellipsis line-clamp-1">{speaker.fields.job_title} at {speaker.fields.company}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
