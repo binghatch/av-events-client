@@ -1,8 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SessionCard from "../components/SessionCard";
 import { HandleToggleFunction, SessionAirtableRecord, SpeakerAirtableRecord } from "../types";// Import the SessionAirtableRecord interface
 import SessionSelector from "../components/SessionSelector";
+import { DateTime } from 'luxon';
+
+
 
 interface ChildProps {
   sessions: SessionAirtableRecord[];
@@ -10,6 +13,7 @@ interface ChildProps {
 
 export default function SessionsSection({ sessions }: ChildProps) {
   const [selectedGroup, setSelectedGroup] = useState<string | "All">("All");
+  const [currentTime, setCurrentTime] = useState<DateTime>(DateTime.now().setZone('Europe/Berlin'));
 
   const handleToggle: HandleToggleFunction = (group) => {
     if (group === "All" || selectedGroup === group) {
@@ -19,6 +23,15 @@ export default function SessionsSection({ sessions }: ChildProps) {
     }
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(DateTime.now().setZone('Europe/Berlin'));
+    }, 300000); // 5 minutes = 300000 ms
+  
+    // Cleanup
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="mt-12 p-6" id="sessions">
       <h2 className="text-4xl font-bold text-terracotta-400">Sessions</h2>
@@ -27,7 +40,7 @@ export default function SessionsSection({ sessions }: ChildProps) {
       <div>
         {sessions && sessions.map(session => {
           if (selectedGroup === "All" || selectedGroup === session.fields.session_group) {
-            return <SessionCard key={session.id} sessionData={session.fields} />
+            return <SessionCard key={session.id} sessionData={session.fields} currentTime={currentTime} />
           }
           return null; // Don't render if this isn't the selected group.
         })}

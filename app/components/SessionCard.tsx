@@ -5,6 +5,7 @@ import { convertIso8601To24HourTime, convertSecondsToTime } from "@/app/utils/co
 import Image from 'next/image';
 import { SpeakerAirtableRecord } from "@/app/types";
 import { ChevronDown } from "lucide-react";
+import { DateTime } from "luxon";
 
 interface SessionAirtableData {
   sessionData: {
@@ -19,7 +20,7 @@ interface SessionAirtableData {
   };
 }
 
-export default function SessionCard({ sessionData }: SessionAirtableData) {
+export default function SessionCard({ sessionData, currentTime }: SessionAirtableData & { currentTime: DateTime }) {
   const {
     session_title,
     session_subheading,
@@ -37,11 +38,16 @@ export default function SessionCard({ sessionData }: SessionAirtableData) {
     setShowFullDescription(!showFullDescription);
   };
 
+  const sessionEndTime = DateTime.fromISO(session_start, { zone: 'Europe/Berlin' }).plus({ seconds: session_duration });
+  const sessionPassed = currentTime > sessionEndTime;
+  const sessionClass = sessionPassed ? 'opacity-50 hover:opacity-100 transition-opacity duration-300' : '';
+
+
   return (
-    <div className="flex flex-col p-6 first:mt-8 mt-4 border border-midnight-800 rounded-lg bg-midnight-900 text-white max-h-full">
+    <div className={`flex flex-col p-6 first:mt-8 mt-4 border border-midnight-800 rounded-lg bg-midnight-900 text-white max-h-full ${sessionClass}`}>
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row items-baseline">
-          <h3 className="text-3xl font-bold">{convertIso8601To24HourTime(session_start)}</h3>
+          <h3 className="text-3xl font-bold">{convertIso8601To24HourTime((session_start))}</h3>
           <span className="text-sm ms-2">{convertSecondsToTime(session_duration)} h</span>
         </div>
         <div className="px-2 py-0.5 rounded-md bg-midnight-600 bg-opacity-10 text-sm text-midnight-500">{session_type}</div>

@@ -1,7 +1,5 @@
 import HeaderSection from '../(sections)/HeaderSection'
 
-HeaderSection
-
 export default function Page() {
   return (
     <div className="flex flex-col min-w-screen min-h-screen items-center justify-start bg-hero-bg bg-no-repeat bg-top bg-auto">
