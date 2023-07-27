@@ -8,6 +8,7 @@ export interface SessionAirtableRecord {
     session_duration: number;
     session_description: string;
     session_speakers: SpeakerAirtableRecord[];
+    session_group: "Opening" | "Infrastructure" | "Systems" | "Applications" | "Closing";
   };
 }
 
@@ -50,4 +51,4 @@ export interface SpeakerAirtableRecord {
   };
 }
 
-export type HandleToggleFunction = () => void;
+export type HandleToggleFunction = (group: string) => void;
