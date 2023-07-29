@@ -1,131 +1,124 @@
-// "use client";
+"use client";
 
-// import { FormEvent, useState } from "react";
+import { useState } from "react";
+import { CheckCircle, Loader } from "lucide-react";
+import { PulseLoader } from "react-spinners";
 
-// export default function MailchimpForm() {
-//   const [formData, setFormData] = useState({
-//     EMAIL: '',
-//     FNAME: '',
-//     LNAME: '',
-//   });
+export default function Mailchimp() {
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
 
-//   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-//     event.preventDefault();
+  const validateInputs = () => {
+    let isValid = true;
 
-//     try {
-//       const response = await fetch(
-//         'https://assemblyventures.us20.list-manage.com/subscribe/post?u=a221f11e4ce2b090de876eb06&id=ad618ba84f&f_id=00435be6f0',
-//         {
-//           mode: 'no-cors',
-//           method: 'POST',
-//           headers: {
-//             'Content-Type': 'application/x-www-form-urlencoded',
-//           },
-//           body: new URLSearchParams(formData).toString(),
-//         }
-//       );
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Invalid email address");
+      isValid = false;
+    } else {
+      setEmailError("");
+    }
 
-//       console.log('Response:', response);
+    // First name validation
+    if (firstName.trim() === "") {
+      setFirstNameError("First name is required");
+      isValid = false;
+    } else {
+      setFirstNameError("");
+    }
 
-//       // Clear the form data after successful submission
-//       setFormData({
-//         EMAIL: '',
-//         FNAME: '',
-//         LNAME: '',
-//       });
+    // Last name validation
+    if (lastName.trim() === "") {
+      setLastNameError("Last name is required");
+      isValid = false;
+    } else {
+      setLastNameError("");
+    }
 
-//       // Add any additional success handling here
-//     } catch (error) {
-//       console.error('Error:', error);
-//       // Add error handling here
-//     }
-//   };
+    return isValid;
+  };
 
-//   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     const { name, value } = event.target;
-//     setFormData((prevFormData) => ({
-//       ...prevFormData,
-//       [name]: value,
-//     }));
-//   };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-//   return (
-//     <form onSubmit={handleSubmit} className="validate" target="_self" noValidate>
-//         <div className="">
-//           <span className="asterisk">*</span> indicates required
-//         </div>
-//         <div className="">
-//           <label htmlFor="mce-EMAIL" className="block mb-2">
-//             Email Address <span className="asterisk">*</span>
-//           </label>
-//           <input
-//             type="email"
-//             name="EMAIL"
-//             className="border rounded py-2 px-3 w-full text-black"
-//             id="mce-EMAIL"
-//             required
-//             value={formData.EMAIL}
-//             onChange={handleChange}
-//           />
-//         </div>
-//         <div className="">
-//           <label htmlFor="mce-FNAME" className="block mb-2">
-//             First Name
-//           </label>
-//           <input
-//             type="text"
-//             name="FNAME"
-//             className="border rounded py-2 px-3 w-full text-black"
-//             id="mce-FNAME"
-//             value={formData.FNAME}
-//             onChange={handleChange}
-//           />
-//         </div>
-//         <div className="">
-//           <label htmlFor="mce-LNAME" className="block mb-2">
-//             Last Name
-//           </label>
-//           <input
-//             type="text"
-//             name="LNAME"
-//             className="border rounded py-2 px-3 w-full text-black"
-//             id="mce-LNAME"
-//             value={formData.LNAME}
-//             onChange={handleChange}
-//           />
-//         </div>
-//         <div hidden>
-//           <input type="hidden" name="tags" value="3437052" />
-//         </div>
-//         <div id="mce-responses" className="clearfalse">
-//           <div
-//             className="response"
-//             id="mce-error-response"
-//             style={{ display: 'none' }}
-//           ></div>
-//           <div
-//             className="response"
-//             id="mce-success-response"
-//             style={{ display: 'none' }}
-//           ></div>
-//         </div>
-//         <div aria-hidden="true" style={{ position: 'absolute', left: '-5000px' }}>
-//           <input
-//             type="text"
-//             name="b_a221f11e4ce2b090de876eb06_ad618ba84f"
-//             tabIndex={-1}
-//             defaultValue=""
-//           />
-//         </div>
-//         <div className="">
-//           <input
-//             type="submit"
-//             name="subscribe"
-//             id="mc-embedded-subscribe"
-//             className="button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-//             value="Subscribe"
-//           />
-//         </div>
-//     </form>
-//   );
-// };
+    // Input validation
+    const isValid = validateInputs();
+    if (!isValid) {
+      return;
+    }
+
+    const url = `/api/subscribe?EMAIL=${encodeURIComponent(
+      email
+    )}&FNAME=${encodeURIComponent(firstName)}&LNAME=${encodeURIComponent(
+      lastName
+    )}`;
+
+    try {
+      setIsLoading(true);
+      const response = await fetch(url);
+      const data = await response.json();
+
+      // Handle the response data from Mailchimp if needed
+      console.log("Mailchimp response:", data);
+      setIsSubscribed(true);
+    } catch (error) {
+      console.error("Error while submitting the form:", error);
+      // Handle error if needed
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="w-full">
+      <form className="flex flex-col justify-between items-center gap-4" onSubmit={handleSubmit}>
+        <div className="w-full flex flex-col justify-between items-center md:flex-row gap-4">
+          <input
+            className="w-full rounded-lg p-4 text-lg text-black"
+            placeholder="Email"
+            type="email"
+            name="EMAIL"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {emailError && <div className="error-message">{emailError}</div>}
+
+          <input
+            className="w-full rounded-lg p-4 text-lg text-black"
+            placeholder="First Name"
+            type="text"
+            name="FNAME"
+            required
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+          {firstNameError && <div className="error-message">{firstNameError}</div>}
+
+          <input
+            className="w-full rounded-lg p-4 text-lg text-black"
+            placeholder="Last Name"
+            type="text"
+            name="LNAME"
+            required
+            onChange={(e) => setLastName(e.target.value)}
+          />
+          {lastNameError && <div className="error-message">{lastNameError}</div>}
+        </div>
+        <div className="w-full flex flex-row justify-center items-center">
+          <button className="w-full md:w-1/3 flex flex-row gap-2 h-14 justify-center items-center border border-terracotta-400 bg-terracotta-400 bg-opacity-10 rounded-lg p-4 text-lg text-terracotta-400" type="submit">
+            {!isLoading && !isSubscribed
+              ? "Sign Up"
+              : isLoading ? <PulseLoader size={12} color="#E77366" />
+              : <><CheckCircle size={16} /><span>Subscribed!</span></>}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}

@@ -1,16 +1,14 @@
-// // import MailchimpForm from "../components/MailchimpForm";
-// import SpeakerTile from "../components/SpeakerTile";
+import MailchimpForm from "../components/MailchimpForm";
 
-// export default async function SpeakerSection() {
-//   const data = await getSpeakerData();
+export default async function NewsletterSection() {
 
-//   return (
-//     <section className="p-4" id="speakers">
-//       <h2 className="text-3xl font-bold text-terracotta-400">Speakers</h2>
-//       <p>This is an overview of the speakers that will be on stage.</p>
-//       <div className="mt-8">
-//         {/* <MailchimpForm /> */}
-//       </div>
-//     </section>
-//   )
-// }
+  return (
+    <section className="mt-12 p-6" id="speakers">
+      <h2 className="text-3xl font-bold text-terracotta-400">Subscribe</h2>
+      <p>Subscribe to our newsletter.</p>
+      <div className="mt-8">
+        <MailchimpForm />
+      </div>
+    </section>
+  )
+}
