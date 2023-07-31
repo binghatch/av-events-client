@@ -16,7 +16,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col min-w-screen min-h-screen items-center justify-start bg-hero-bg bg-no-repeat bg-top bg-auto">
       <div className="w-full md:w-2/3">
-        <NavBarSection />
+        {/* <NavBarSection /> */}
       </div>
       <header className="w-full md:w-2/3">
         <HeaderSection />
