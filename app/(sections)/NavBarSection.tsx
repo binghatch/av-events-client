@@ -7,7 +7,7 @@ export default function NavBarSection() {
     <nav className="flex flex-row justify-between items-center w-full pt-8 px-6">
       <div>
         <Link href={"/"}>
-          <Image src={Logo} height={40} alt="Assembly Summit"/>
+          <Image src={Logo} height={40} alt="Assembly Summit" unoptimized/>
         </Link>
       </div>
       <div>
