@@ -1,11 +1,13 @@
+import Logo from '../../public/images/av-summit-logo.svg';
+import Image from 'next/image';
+
 export default function NavBarSection() {
   return (
-    <nav className="flex flex-row justify-between items-center w-full py-6 px-4">
+    <nav className="flex flex-row justify-between items-center w-full pt-8 px-6">
       <div>
-        Logo
+        <Image src={Logo} height={40} alt="Assembly Summit"/>
       </div>
       <div>
-        Other info
       </div>
     </nav>
   )
