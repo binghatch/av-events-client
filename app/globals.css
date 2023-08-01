@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.thick-underline::after {
+  content: '';
+  background-color: #E77366;
+  height: 20px;
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 2px;
+  z-index: -1;
+}
+.thick-underline {
+  position: relative;
+}
