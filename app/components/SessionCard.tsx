@@ -77,7 +77,7 @@ export default function SessionCard({ sessionData, currentTime }: SessionAirtabl
             </div>
             <div className="ms-4">
               <h5 className="font-bold">{speaker.fields.full_name}</h5>
-              <p className="text-zinc-400 text-ellipsis line-clamp-1">{speaker.fields.job_title} at {speaker.fields.company}</p>
+              <p className="text-slate-400 text-ellipsis line-clamp-1">{speaker.fields.job_title} at {speaker.fields.company}</p>
             </div>
           </a>
         ))}
