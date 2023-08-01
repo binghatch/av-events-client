@@ -53,7 +53,7 @@ export default function SessionCard({ sessionData, currentTime }: SessionAirtabl
         <div className="px-2 py-0.5 rounded-md bg-midnight-600 bg-opacity-10 text-sm text-midnight-500">{session_type}</div>
       </div>
       <div className="flex flex-col justify-start items-start mt-6 w-full">
-        <h4 className="text-xl font-bold text-ellipsis overflow-hidden">{session_title}</h4>
+        <h4 className="text-xl font-bold text-ellipsis overflow-hidden thick-underline-sm">{session_title}</h4>
         <p className="text-slate-400 text-ellipsis overflow-hidden">{session_subheading}</p>
         <div className="mt-4 px-2 py-0.5 rounded-md bg-terracotta-400 bg-opacity-10 text-sm text-terracotta-400">{session_group}</div>
         <div className={`mt-2 block relative w-full md:max-w-prose overflow-hidden ${showFullDescription ? "max-h-[512px]" : "max-h-20"} transition-max-h duration-300 ease-in-out`}>

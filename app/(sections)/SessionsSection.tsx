@@ -35,7 +35,7 @@ export default function SessionsSection({ sessions }: ChildProps) {
   return (
     <section className="mt-12 p-6" id="sessions">
       <h2 className=""><span className="thick-underline text-3xl font-black">Sessions</span></h2>
-      <p>This is an overview of the sessions that will take place.</p>
+      <p className="mt-1">This is an overview of the sessions that will take place.</p>
       <SessionSelector handleToggle={handleToggle} selectedGroup={selectedGroup} />
       <div>
         {sessions && sessions.map(session => {

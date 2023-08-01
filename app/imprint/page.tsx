@@ -2,7 +2,7 @@ import HeaderSection from '../(sections)/HeaderSection'
 
 export default function Page() {
   return (
-    <div className="flex flex-col min-w-screen min-h-screen items-center justify-start bg-hero-bg bg-no-repeat bg-top bg-auto">
+    <div className="flex flex-col min-w-screen min-h-screen min-w-screen items-center justify-start bg-hero-bg bg-no-repeat bg-top bg-auto">
       <main className="w-full md:w-2/3">
         <section className="my-12 px-6 max-w-prose">
           <h2 className="text-4xl font-bold text-terracotta-400">Imprint</h2> 
