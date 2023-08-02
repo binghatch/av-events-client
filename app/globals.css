@@ -16,3 +16,18 @@
 .thick-underline {
   position: relative;
 }
+
+.thick-underline-sm::after {
+  content: '';
+  background-color: #E77366;
+  height: 14px;
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 1px;
+  z-index: -1;
+}
+.thick-underline-sm {
+  position: relative;
+}

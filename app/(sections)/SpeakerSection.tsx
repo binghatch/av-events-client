@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import SpeakerTile from "../components/SpeakerTile";
 import { SpeakerAirtableRecord } from "../types";
 
@@ -14,9 +13,7 @@ export default async function SpeakerSection({ speakers }: ChildProps ) {
       <div className="mt-8">
         <ul className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 list-none">
           {speakers && speakers.map((speaker) => (
-            <Suspense key={speaker.id} fallback={<div>Loading ...</div>}>
-              <SpeakerTile speakerData={speaker} />
-            </Suspense>
+            speaker.fields.show && <SpeakerTile key={speaker.id} speakerData={speaker} />
           ))}
         </ul>
       </div>

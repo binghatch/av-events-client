@@ -46,7 +46,7 @@ export default function SessionsSection({ sessions }: ChildProps) {
         })}
       </div>
       <div className="flex flex-col justify-start items-start w-full p-4 mt-6 rounded-lg bg-terracotta-400 bg-opacity-10">
-        <h1 className="text-xl font-bold">Stay tuned for more annoucements.</h1>
+        <h1 className="text-xl font-black"><span className="thick-underline-sm">Stay tuned</span> for more annoucements.</h1>
         <p className="max-w-prose mt-2">Stay connected and be the first to discover upcoming sessions.<br/>Watch this space for updates!</p>
       </div>
     </section>
