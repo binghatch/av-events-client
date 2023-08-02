@@ -39,11 +39,15 @@ export default function SessionsSection({ sessions }: ChildProps) {
       <SessionSelector handleToggle={handleToggle} selectedGroup={selectedGroup} />
       <div>
         {sessions && sessions.map(session => {
-          if (selectedGroup === "All" || selectedGroup === session.fields.session_group) {
+          if (session.fields.show_session && selectedGroup === "All" || selectedGroup === session.fields.session_group ) {
             return <SessionCard key={session.id} sessionData={session.fields} currentTime={currentTime} />
           }
           return null; // Don't render if this isn't the selected group.
         })}
+      </div>
+      <div className="flex flex-col justify-start items-start w-full p-4 mt-6 rounded-lg bg-terracotta-400 bg-opacity-10">
+        <h1 className="text-xl font-bold">Stay tuned for more annoucements.</h1>
+        <p className="max-w-prose mt-2">Stay connected and be the first to discover upcoming sessions.<br/>Watch this space for updates!</p>
       </div>
     </section>
   )

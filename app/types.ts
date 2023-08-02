@@ -9,6 +9,7 @@ export interface SessionAirtableRecord {
     session_description: string;
     session_speakers: SpeakerAirtableRecord[];
     session_group: "Opening" | "Infrastructure" | "Systems" | "Applications" | "Closing";
+    show_session: boolean;
   };
 }
 
