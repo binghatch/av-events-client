@@ -6,7 +6,7 @@ import Logo from "../../public/images/av-summit-logo.svg";
 export default function HeaderSection() {
   return (
     <header className="flex flex-col justify-center items-start min-h-screen w-full">
-      <div className="p-6">
+      <div className="px-4 py-6">
         {/* <h1 className="flex flex-col items-start font-medium text-3xl">Welcome to</h1> */}
         <Image className="-ms-1" src={Logo} height={64} quality={100} alt="Assembly Summit" />
         <p className="tracking-wide max-w-prose w-5/6 mt-6">Engage with thought leaders and entrepreneurs shaping the future of infrastructure, systems, and applications.</p>

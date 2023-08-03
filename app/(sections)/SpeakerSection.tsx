@@ -7,7 +7,7 @@ interface ChildProps {
 
 export default async function SpeakerSection({ speakers }: ChildProps ) {
   return (
-    <section className="mt-12 p-6" id="speakers">
+    <section className="mt-12 px-4 py-6" id="speakers">
       <h2 className=""><span className="thick-underline text-3xl font-black">Speakers</span></h2>
       <p className="mt-1">This is an overview of the speakers that will be on stage.</p>
       <div className="mt-8">
