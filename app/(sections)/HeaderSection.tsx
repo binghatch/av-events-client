@@ -20,7 +20,10 @@ export default function HeaderSection() {
         <div className="px-4 py-6">
           {/* <h1 className="flex flex-col items-start font-medium text-3xl">Welcome to</h1> */}
           <Image className="-ms-1" src={SummitLogo} height={64} quality={100} alt="Assembly Summit" />
-          <p className="tracking-wide max-w-prose w-5/6 mt-6">Engage with thought leaders and entrepreneurs shaping the future of infrastructure, systems, and applications.</p>
+          <p className="tracking-wide max-w-prose w-5/6 mt-3 md:mt-6">
+          <span className="hidden md:inline-block">For this year’s Assembly Summit, we have partnered up with VDA to curate the Visionary Clubhouse at IAA in Munich on September 6th.</span><br /><br />
+            Join us to engage with thought leaders, category-leading entrepreneurs and corporate innovators across the mobility sector. Together, we will take a closer look at how mobility innovation is unfolding across infrastructure, systems, and applications.
+          </p>
           {/* <Link className="inline-flex justify-start items-center mt-12 px-4 py-2 rounded-full border border-terracotta-400 bg-terracotta-400 bg-opacity-10 text-terracotta-400" href="#sessions">
             <span>Jump to sessions</span>
             <ArrowRight className="ms-4" width={16} height={16} />
