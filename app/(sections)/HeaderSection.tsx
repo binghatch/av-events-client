@@ -31,7 +31,7 @@ export default function HeaderSection() {
           <div className="flex flex-col justify-start items-start gap-4 mt-12">
             <div>
               <p className="font-bold text-sm">Time</p>
-              <p className="tracking-wide">Sepember 6th, 2023 at 10:00 am (CEST)</p>
+              <p className="tracking-wide">Sepember 6th, 2023 at 10:00 am - 06:00 pm (CEST)</p>
             </div>
             <div>
               <p className="font-bold text-sm">Place</p>
