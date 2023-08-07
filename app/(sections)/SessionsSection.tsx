@@ -1,4 +1,4 @@
-c"use client";
+"use client";
 import { useState, useEffect } from "react";
 import SessionCard from "../components/SessionCard";
 import { HandleToggleFunction, SessionAirtableRecord, SpeakerAirtableRecord } from "../types";// Import the SessionAirtableRecord interface
