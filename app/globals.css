@@ -31,3 +31,15 @@
 .thick-underline-sm {
   position: relative;
 }
+
+.pattern {
+  /* background-color: rgba(0,0,0,0);
+  opacity: 0.5;
+  background-image: radial-gradient(#000E2C 0.8px, rgba(0,0,0,0) 0.8px);
+  background-size: 4px 4px; */
+  background-color: transparent;
+  opacity: 0.5;
+  background-image:  radial-gradient(#000E2C 1px, transparent 1px), radial-gradient(#000E2C 1px, transparent 1px);
+  background-size: 4px 4px;
+  background-position: 0 0,10px 10px;
+}

@@ -36,12 +36,12 @@ export default function Page() {
             VAT indentification number in accorance with Section 27a of the German VAT act: DE123456789
           </p> */}
 
-          <h3 className='font-bold mt-8 text-sm'>Person responsible for content in accordance with 55 Abs. 2 RStV</h3>
+          {/* <h3 className='font-bold mt-8 text-sm'>Person responsible for content in accordance with 55 Abs. 2 RStV</h3>
           <p>
             Felix Scheuffelen<br />
             Heinrich-Roller-Straße 16B<br />
             10405 Berlin
-          </p>
+          </p> */}
         </section>
       </main>
       <footer>

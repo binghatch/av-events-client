@@ -1,4 +1,4 @@
-"use client";
+c"use client";
 import { useState, useEffect } from "react";
 import SessionCard from "../components/SessionCard";
 import { HandleToggleFunction, SessionAirtableRecord, SpeakerAirtableRecord } from "../types";// Import the SessionAirtableRecord interface
@@ -33,7 +33,7 @@ export default function SessionsSection({ sessions }: ChildProps) {
   }, []);
 
   return (
-    <section className="mt-12 px-4 py-6" id="sessions">
+    <section className="px-4 pb-6" id="sessions">
       <h2 className=""><span className="thick-underline text-3xl font-black">Sessions</span></h2>
       <p className="mt-1">This is an overview of the sessions that will take place.</p>
       <SessionSelector handleToggle={handleToggle} selectedGroup={selectedGroup} />
