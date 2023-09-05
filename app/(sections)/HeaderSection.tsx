@@ -10,7 +10,7 @@ export default function HeaderSection() {
       <nav className="flex flex-row justify-between items-center w-full pt-8 px-4">
         <div>
           <Link href={"https://www.assemblyventures.com/"} target="_blank">
-            <Image src={Logo} quality={100} height={40} alt="Assembly Summit" unoptimized />
+            <Image src={Logo} priority quality={100} height={40} alt="Assembly Summit" unoptimized />
           </Link>
         </div>
         <div>
@@ -19,7 +19,7 @@ export default function HeaderSection() {
       <header className="flex flex-col justify-center items-start w-full min-h-screen">
         <div className="px-4 py-6">
           {/* <h1 className="flex flex-col items-start font-medium text-3xl">Welcome to</h1> */}
-          <Image className="-ms-1" src={SummitLogo} height={64} quality={100} alt="Assembly Summit" />
+          <Image className="-ms-1" priority src={SummitLogo} height={64} quality={100} alt="Assembly Summit" />
           <p className="tracking-wide max-w-prose w-5/6 mt-3 md:mt-6">
           <span className="hidden md:inline-block">For this year’s Assembly Summit, we have partnered up with VDA to curate the Visionary Clubhouse at IAA in Munich on September 6th.</span><br /><br />
             Join us to engage with thought leaders, category-leading entrepreneurs and corporate innovators across the mobility sector. Together, we will take a closer look at how mobility innovation is unfolding across infrastructure, systems, and applications.
