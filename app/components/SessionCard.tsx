@@ -68,11 +68,11 @@ export default function SessionCard({ sessionData, currentTime }: SessionAirtabl
     <div>
         {session_speakers && session_speakers.length > 0 && session_speakers.map(speaker => (
           <a href={speaker.fields.linkedin} className="group flex flex-row justify-start items-center w-full first:mt-8 mt-4" key={speaker.id}>
-            <div className="border border-midnight-800 rounded-full overflow-hidden aspect-square w-14 h-14 shrink-0">
+            <div className="flex justify-center items-center border border-midnight-800 rounded-full overflow-hidden aspect-square w-14 h-14 shrink-0">
               {speaker.fields.avatar ? (
-                <Image className="object-cover grayscale group-hover:grayscale-0 transition duration-300 object-center h-14" src={speaker.fields.avatar[0].url} height={56} width={56} alt={speaker.fields.full_name}></Image>
+                <Image className="object-cover grayscale group-hover:grayscale-0 transition duration-300 object-center aspect-square" src={speaker.fields.avatar[0].url} height={56} width={56} alt={speaker.fields.full_name}></Image>
               ) : (
-                <span className="text-5xl">{`${speaker.fields.first_name[0]} ${speaker.fields.last_name[0]}`}</span>
+                <span className="text-xl">{`${speaker.fields.first_name[0]} ${speaker.fields.last_name[0]}`}</span>
               )}
             </div>
             <div className="ms-4 shrink">
